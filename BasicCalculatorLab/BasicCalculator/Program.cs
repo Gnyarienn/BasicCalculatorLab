@@ -4,21 +4,45 @@ namespace BasicCalculator
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("*** BASIC CALCULATOR ***");
+            Console.WriteLine("*** WHEATHER CALCULATOR ***");
 
-            Console.WriteLine("Enter the first number");
+            //declare variables
+            string input;
+            int temp;
+            int relhumidity;
+            int dewpoint;
 
-            // int.Parse will take a string data type and convert it to an int data type
-            int firstNumber = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the second number");
-            int secondNumber = int.Parse(Console.ReadLine());
 
-            int sum = firstNumber + secondNumber;
+            //ask user for temp
+            Console.WriteLine("Enter the temperature");
+            input = Console.ReadLine();
+            temp = int.Parse(input);
 
-            Console.WriteLine("The answer is " + sum);
+            //ask user for rel humidity 
+            Console.WriteLine("enter RH");
+            input = Console.ReadLine();
+            relhumidity = int.Parse(input);
+
+            //ask user for dew point 
+            dewpoint= temp - (9 * (100 - relhumidity) / 25);
+
+            //print the dewpoint
+            Console.WriteLine("Dew point =" + dewpoint);
+
+            Console.WriteLine("Enter windspeed");
+            int windspeed = int.Parse(Console.ReadLine());
+
+            double windchill = 35.74 + (0.6215 * temp) - 37.5 * Math.Pow(windspeed, 0.16)
+               + 0.4275 * temp * Math.Pow(windspeed, 0.16);
+            Console.WriteLine("Wind Chill is" + windchill);
+
+
+            
+
         }
     }
 }
+
